@@ -1,0 +1,12 @@
+@use '../../../styles/variables';
+@use '../../../styles/mixins';
+
+.icon-btn {
+    height: 53px;
+    width: 53px;
+
+    background-color: variables.$grey;
+    @include mixins.flex-item($jc: center, $ai: center);
+
+    
+}

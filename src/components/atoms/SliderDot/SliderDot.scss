@@ -1,0 +1,25 @@
+@use '../../../styles/mixins';
+
+.dot {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: 1px solid black;
+
+    @include mixins.flex-item($jc: center, $ai: center);
+
+    &.light {
+        border: 1px solid white;
+    }
+
+    &__inner {
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background-color: black;
+        &.light {
+            border: 1px solid white;
+            background-color: white;
+        }
+    }
+}

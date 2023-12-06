@@ -1,0 +1,32 @@
+@use '../../../styles/mixins';
+@use '../../../styles/variables';
+
+.header {
+    height: 80px;
+    width: 100%;
+    background: rgba(30, 30, 30, 0.48);
+    position: fixed;
+    @include mixins.flex-item($ai: center);
+    z-index: 100;
+
+    &__inner {
+        height: 100%;
+        max-width: 1280px;
+        padding: 0 15px;
+        width: 100%;
+        margin: 0 auto;
+        @include mixins.flex-item($ai: center, $jc: space-between);
+    }
+
+    &__buttons {
+        @include mixins.flex-item($gap: 10px);
+    }
+
+    &__btn {
+        &.active {
+            & button {
+                background-color: variables.$pink;
+            }
+        }
+    }
+}

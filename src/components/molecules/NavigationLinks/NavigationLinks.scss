@@ -1,0 +1,48 @@
+@use '../../../styles/mixins';
+@use '../../../styles/variables';
+
+.nav {
+    &__list {
+        @include mixins.flex-item($ai: center, $gap: 30px);
+    }
+
+    &__link {
+        // border-bottom: 1px solid white;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            display: block;
+            width: 0px;
+            height: 1.3px;
+            background: white;
+            transition: 0.35s;
+        }
+
+        &:hover:after{
+            width: 100%;
+        }
+
+        &.active:after {
+            width: 100%;
+        }
+
+    }
+
+    &__item {
+        text-transform: uppercase;
+        color: white;
+        font-family: Lato;
+        font-size: 16px;
+        font-weight: 500;
+
+        // &-bottom {
+        //     display: block;
+        //     width: 20%;
+        //     height: 1px;
+        //     background: white;
+        // }
+    }
+}

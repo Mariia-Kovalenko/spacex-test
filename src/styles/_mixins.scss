@@ -1,0 +1,15 @@
+@mixin flex-item($direction: row, $jc: start, $ai: start, $gap: 0) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $ai;
+    justify-content: $jc;
+    gap: $gap;
+}
+
+@mixin image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
