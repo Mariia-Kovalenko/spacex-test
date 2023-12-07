@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import SliderDotsGroup from "../../molecules/SliderDotsGroup/SliderDotsGroup";
 import CardsList from "../CardsList/CardsList";
 import Slider from "../Slider/Slider";
 import "./ToursList.scss";
+import SpaceMission from "../../../graphql";
 
 const cards = [
     {
@@ -37,6 +39,17 @@ const cards = [
 ];
 
 export default function ToursList() {
+    const [data, setData] = useState<any[]>([]);
+
+    async function fetchData() {
+        const spaceRockets = await SpaceMission.getRockets();
+        setData(spaceRockets);
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     const chunck = (arr: any[], n: number) => {
         if (arr.length <= n) {
             return arr;
@@ -60,19 +73,21 @@ export default function ToursList() {
     };
     return (
         <div id="tours">
-            <Slider
-                title="popular tours"
-                sliderContent={chunck(cards, 3)}
-                autoplay={false}
-                children={[
-                    <CardsList key="4567" list={chunck(cards, 3)} />,
-                    <SliderDotsGroup
-                        key="vbn"
-                        color="dark"
-                        position="bottom"
-                    />,
-                ]}
-            />
+            {data.length && (
+                <Slider
+                    title="popular tours"
+                    sliderContent={chunck(data, 3)}
+                    autoplay={false}
+                    children={[
+                        <CardsList key="4567" list={chunck(data, 3)} />,
+                        <SliderDotsGroup
+                            key="vbn"
+                            color="dark"
+                            position="bottom"
+                        />,
+                    ]}
+                />
+            )}
         </div>
     );
 }

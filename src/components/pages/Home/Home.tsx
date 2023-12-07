@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { sliderImages } from "../../../utils/constants";
 import ScrollLink from "../../atoms/ScrollLink/ScrollLink";
 import SliderDotsGroup from "../../molecules/SliderDotsGroup/SliderDotsGroup";
@@ -7,6 +8,7 @@ import ToursList from "../../organisms/ToursList/ToursList";
 import "./Home.scss";
 
 export default function Home() {
+
     return (
         <div className="home">
             <div className="home__banner">

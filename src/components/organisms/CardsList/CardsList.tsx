@@ -9,7 +9,7 @@ export default function CardsList({ list }: { list: any[] }) {
     const { slideNumber } = useContext(SliderContext);
 
     const renderCards = (list: any[]) => {
-        return list.map(({ title, description }, i) => {
+        return list.map(({ name, description }, i) => {
             // console.log(i)
             // let image = slideNumber + 1;
             // if (slideNumber > 3) {
@@ -19,7 +19,7 @@ export default function CardsList({ list }: { list: any[] }) {
                 <Card
                     image={`./slider-1.jpg`}
                     key={`card-${Math.random()}`}
-                    title={title}
+                    title={name}
                     content={description}
                     children={[
                         <Button key="jk" text={"Buy"} onClick={() => {}} />,
