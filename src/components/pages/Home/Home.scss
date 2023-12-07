@@ -2,8 +2,10 @@
 @use '../../../styles/variables';
 
 .home {
+    padding-bottom: 90px;
     &__banner {
         height: 100vh;
+        margin-bottom: 90px;
     }
 }
 

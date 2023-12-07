@@ -1,9 +1,17 @@
 import { useContext } from "react";
 import { SliderContext } from "../../organisms/Slider/Slider";
 import SliderDot from "../../atoms/SliderDot/SliderDot";
-import './SliderDotsGroup.scss';
+import "./SliderDotsGroup.scss";
 
-export default function SliderDotsGroup({color}: {color: 'light' | 'dark'}) {
+interface ISliderDotsGroupProps {
+    color: "light" | "dark";
+    position: "center" | "bottom";
+}
+
+export default function SliderDotsGroup({
+    color,
+    position,
+}: ISliderDotsGroupProps) {
     const { slidesCount } = useContext(SliderContext);
 
     const renderDots = () => {
@@ -16,5 +24,5 @@ export default function SliderDotsGroup({color}: {color: 'light' | 'dark'}) {
 
         return dots;
     };
-    return <div className="slider-dots">{renderDots()}</div>;
+    return <div className={`slider-dots ${position}`}>{renderDots()}</div>;
 }

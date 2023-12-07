@@ -1,0 +1,8 @@
+@use '../../../styles/mixins';
+
+.cards {
+    // @include mixins.flex-item($jc: space-between, $gap: 10px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 25px;
+}

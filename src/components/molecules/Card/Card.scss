@@ -1,0 +1,48 @@
+@use '../../../styles/mixins';
+@use '../../../styles/variables';
+
+.card {
+    border: 1px solid variables.$blue;
+    min-height: fit-content;
+    min-width: 280px;
+    max-width: 400px;
+
+    @include mixins.flex-item($direction: column, $ai: center);
+
+    &__inner {
+        padding: 30px;
+        width: 100%;
+        @include mixins.flex-item($direction: column);
+        flex-grow: 1;
+    }
+
+    &__image {
+        height: 300px;
+        width: 100%;
+
+        & img {
+            @include mixins.image;
+        }
+    }
+
+    &__title {
+        font-family: 'Syne', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    &__description {
+        font-size: 24px;
+        color: variables.$dark-blue;
+        text-align: center;
+    }
+
+    &__actions {
+        padding: 0 30px 30px;
+        width: 100%;
+        @include mixins.flex-item($gap: 10px)
+    }
+}

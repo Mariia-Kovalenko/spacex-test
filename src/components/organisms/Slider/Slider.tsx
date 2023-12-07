@@ -2,7 +2,7 @@ import { useEffect, useState, createContext } from "react";
 import SliderArrows from "../../molecules/SliderArrows/SliderArrows";
 import SliderDotsGroup from "../../molecules/SliderDotsGroup/SliderDotsGroup";
 import SlidesList from "../../molecules/SlidesList/SlidesList";
-import './Slider.scss';
+import "./Slider.scss";
 
 export const SliderContext = createContext({
     changeSlide: (slide: number) => {},
@@ -12,7 +12,19 @@ export const SliderContext = createContext({
     slides: [""],
 });
 
-export default function Slider({ autoplay, sliderContent }: { autoplay: boolean, sliderContent: any }) {
+interface ISliderProps {
+    autoplay: boolean;
+    sliderContent: any;
+    children: string | JSX.Element | JSX.Element[];
+    title?: string;
+}
+
+export default function Slider({
+    autoplay,
+    sliderContent,
+    children,
+    title,
+}: ISliderProps) {
     const [slides, setSlides] = useState(sliderContent);
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -59,11 +71,17 @@ export default function Slider({ autoplay, sliderContent }: { autoplay: boolean,
                     slides: slides,
                 }}
             >
-                {/* <SliderArrows /> */}
-                <SlidesList />
-                <div className="dots">
+                {!autoplay && (
+                    <div className="slider-top">
+                        {title && <h2 className="section-title">{title}</h2>}
+                        <SliderArrows />
+                    </div>
+                )}
+                {children}
+                {/* <SlidesList />
+                <div className="dots-center">
                     <SliderDotsGroup color='light' />
-                </div>
+                </div> */}
             </SliderContext.Provider>
         </div>
     );
