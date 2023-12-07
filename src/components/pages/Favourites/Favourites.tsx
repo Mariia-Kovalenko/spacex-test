@@ -1,10 +1,22 @@
+import { useRecoilState } from "recoil";
 import Button from "../../atoms/Button/Button";
 import IconButton from "../../atoms/IconButton/IconButton";
 import Card from "../../molecules/Card/Card";
 import "./Favourites.scss";
+import { favouritesState } from "../../../state/atoms/FavouritesState";
 
 export default function Favourites() {
-    const favourites = [{ title: "item1" }, { title: "item2" }];
+    const [favs, setFavs] = useRecoilState(favouritesState);
+
+    function clearFavourites() {
+        setFavs([]);
+    }
+
+    function deleteFavourite(id: string) {
+        setFavs((prev) => {
+            return prev.filter((fav) => fav.id !== id);
+        })
+    }
 
     return (
         <div className="favourites">
@@ -13,15 +25,17 @@ export default function Favourites() {
                 <img src="./slider-3.jpg" alt="banner" />
             </div>
             <div className="favourites__list container">
-                <button className="clear">Clear All</button>
+                <button className="clear" onClick={clearFavourites}>
+                    Clear All
+                </button>
                 <div className="cards">
-                    {favourites.map(({ title }) => {
+                    {favs.map(({ id, name, description }) => {
                         return (
                             <Card
                                 image={`./slider-1.jpg`}
-                                key={`card-${Math.random()}`}
-                                title={title}
-                                content={"description"}
+                                key={id}
+                                title={name}
+                                content={description}
                                 children={[
                                     <Button
                                         key="jk"
@@ -32,7 +46,7 @@ export default function Favourites() {
                                         key="erfv"
                                         icon={"./Delete.svg"}
                                         alt="like"
-                                        onClick={() => {}}
+                                        onClick={() => {deleteFavourite(id)}}
                                     />,
                                 ]}
                             />

@@ -35,3 +35,7 @@ export default function Home() {
         </div>
     );
 }
+function useRecoilState(favouritesState: any): [any, any] {
+    throw new Error("Function not implemented.");
+}
+

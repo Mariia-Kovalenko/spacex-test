@@ -4,6 +4,7 @@ import CardsList from "../CardsList/CardsList";
 import Slider from "../Slider/Slider";
 import "./ToursList.scss";
 import SpaceMission from "../../../graphql";
+import { favouritesState } from "../../../state/atoms/FavouritesState";
 
 const cards = [
     {
@@ -38,11 +39,23 @@ const cards = [
     },
 ];
 
+export interface RocketData {
+    id: string;
+    name: string;
+    description: string;
+}
+
 export default function ToursList() {
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<RocketData[]>([]);
+    // const [favourites, setFavourites] = useRecoilState(favouritesState);
+
+    // function addFavourites(item: RocketData) {
+    //     setFavourites((prev: any) => [...prev, item])
+    // }
 
     async function fetchData() {
         const spaceRockets = await SpaceMission.getRockets();
+        // console.log(spaceRockets)
         setData(spaceRockets);
     }
 
@@ -91,3 +104,7 @@ export default function ToursList() {
         </div>
     );
 }
+function useRecoilState(favouritesState: any): [any, any] {
+    throw new Error("Function not implemented.");
+}
+
