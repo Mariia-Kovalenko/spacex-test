@@ -11,7 +11,6 @@ import { RocketData } from "../ToursList/ToursList";
 export default function CardsList({ list }: { list: any[] }) {
     const { slideNumber } = useContext(SliderContext);
     const [favs, setFavs] = useRecoilState(favouritesState);
-    console.log(list);
 
     function addFavourites(item: RocketData) {
         setFavs((prev) => [...prev, item])
