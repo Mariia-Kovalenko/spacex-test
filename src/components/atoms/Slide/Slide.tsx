@@ -1,9 +1,14 @@
-import './Slide.scss';
+import "./Slide.scss";
 
-export default function Slide({ imageScr, active }: { imageScr: string, active?: boolean }) {
+interface ISlideProps {
+    imageScr: string;
+    active?: boolean;
+}
+
+export default function Slide({ imageScr, active }: ISlideProps) {
     return (
-        <div className='slide'>
-            <img src={imageScr} alt='slide' />
+        <div className="slide">
+            <img src={imageScr} alt="slide" />
         </div>
     );
 }

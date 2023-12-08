@@ -5,6 +5,7 @@ import Card from "../../molecules/Card/Card";
 import "./Favourites.scss";
 import { favouritesState } from "../../../state/atoms/FavouritesState";
 
+
 export default function Favourites() {
     const [favs, setFavs] = useRecoilState(favouritesState);
 
@@ -29,21 +30,21 @@ export default function Favourites() {
                     Clear All
                 </button>
                 <div className="cards">
-                    {favs.map(({ id, name, description }) => {
+                    {favs.map(({ id, name, description, image }) => {
                         return (
                             <Card
-                                image={`./slider-1.jpg`}
+                                image={image || './slider-1.jpg'}
                                 key={id}
                                 title={name}
                                 content={description}
                                 children={[
                                     <Button
-                                        key="jk"
+                                        key={`item-${Math.random()}`}
                                         text={"Buy"}
                                         onClick={() => {}}
                                     />,
                                     <IconButton
-                                        key="erfv"
+                                        key={`item-${Math.random()}`}
                                         icon={"./Delete.svg"}
                                         alt="like"
                                         onClick={() => {deleteFavourite(id)}}

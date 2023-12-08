@@ -28,10 +28,6 @@ export default function Slider({
     const [slides, setSlides] = useState(sliderContent);
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    // useEffect(() => {
-    //     setSlides(sliderImages);
-    // });
-
     const changeSlide = (direction = 1) => {
         let slideNumber = 0;
 
@@ -78,10 +74,6 @@ export default function Slider({
                     </div>
                 )}
                 {children}
-                {/* <SlidesList />
-                <div className="dots-center">
-                    <SliderDotsGroup color='light' />
-                </div> */}
             </SliderContext.Provider>
         </div>
     );

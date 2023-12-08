@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Button from "../../atoms/Button/Button";
 import IconButton from "../../atoms/IconButton/IconButton";
 import Card from "../../molecules/Card/Card";
@@ -16,37 +16,27 @@ export default function CardsList({ list }: { list: any[] }) {
         setFavs((prev) => [...prev, item])
     }
 
-    useEffect(() => {
-        console.log('favs',favs)
-    },[favs])
-
-    function handleAddToFavourites(id: string) {
-        console.log(id);
+    function handleAddToFavourites(id: string, image: string) {
         let item = list[slideNumber].find((item: RocketData) => item.id === id);
-        console.log(item);
-        addFavourites(item);
+        addFavourites({...item, image: image});
     }
 
     const renderCards = (list: any[]) => {
         return list.map(({ id, name, description }, i) => {
-            // console.log(i)
-            // let image = slideNumber + 1;
-            // if (slideNumber > 3) {
-            //     image = slideNumber % 3;
-            // }
+            const image = `./slider-${i+1}.jpg`;
             return (
                 <Card
-                    image={`./slider-1.jpg`}
+                    image={image}
                     key={id}
                     title={name}
                     content={description}
                     children={[
-                        <Button key="jk" text={"Buy"} onClick={() => {}} />,
+                        <Button key={`item-${Math.random()}`} text={"Buy"} onClick={() => {}} />,
                         <IconButton
-                            key="erfv"
+                            key={`item-${Math.random()}`}
                             icon={"./like.svg"}
                             alt="like"
-                            onClick={() => {handleAddToFavourites(id)}}
+                            onClick={() => {handleAddToFavourites(id, image)}}
                         />,
                     ]}
                 />

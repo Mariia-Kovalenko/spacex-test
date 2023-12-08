@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { sliderImages } from "../../../utils/constants";
+import { ARROW_DOWN, SLIDER_IMAGES, TOURS_SECTION_ID } from "../../../utils/constants";
 import ScrollLink from "../../atoms/ScrollLink/ScrollLink";
 import SliderDotsGroup from "../../molecules/SliderDotsGroup/SliderDotsGroup";
 import SlidesList from "../../molecules/SlidesList/SlidesList";
@@ -16,26 +15,23 @@ export default function Home() {
                     The space is waiting for <br /> <span>you</span>
                 </h1>
                 <Slider
-                    sliderContent={sliderImages}
+                    sliderContent={SLIDER_IMAGES}
                     autoplay={true}
                     children={[
-                        <SlidesList key="ghj" />,
+                        <SlidesList key={`slider-${Math.random()}`} />,
                         <SliderDotsGroup
-                            key="ghio"
+                            key={`slider-${Math.random()}`}
                             color="light"
                             position="center"
                         />,
                     ]}
                 />
-                <ScrollLink scrollTo={"tours"} icon={"./arrow-down.svg"} />
+                <ScrollLink scrollTo={TOURS_SECTION_ID} icon={ARROW_DOWN} />
             </div>
             <div className="container">
                 <ToursList />
             </div>
         </div>
     );
-}
-function useRecoilState(favouritesState: any): [any, any] {
-    throw new Error("Function not implemented.");
 }
 

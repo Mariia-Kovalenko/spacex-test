@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
 
-export default function NavigationItem({ text }: { text: string }) {
+interface INavItemProps {
+    text: string;
+}
+
+export default function NavigationItem({ text }: INavItemProps) {
     return (
         <li className="nav__item">
             <NavLink
@@ -11,7 +15,6 @@ export default function NavigationItem({ text }: { text: string }) {
             >
                 {text}
             </NavLink>
-            {/* <span className="nav__item-bottom"></span> */}
         </li>
     );
 }

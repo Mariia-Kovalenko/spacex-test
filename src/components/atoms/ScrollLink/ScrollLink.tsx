@@ -12,7 +12,7 @@ export default function ScrollLink({scrollTo, icon}: IScrollLinkProps) {
             href={`#${scrollTo}`}
             onClick={(e) => {
                 let i = document.getElementById(scrollTo);
-                e.preventDefault(); // Stop Page Reloading
+                e.preventDefault(); 
                 i &&
                     i.scrollIntoView({
                         behavior: "smooth",

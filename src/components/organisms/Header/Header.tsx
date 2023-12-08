@@ -4,6 +4,12 @@ import IconButton from "../../atoms/IconButton/IconButton";
 import Logo from "../../atoms/Logo/Logo";
 import NavigationLinks from "../../molecules/NavigationLinks/NavigationLinks";
 import "./Header.scss";
+import {
+    FAVOURITES_ENDPOINT,
+    LIKE_ICON,
+    LIKE_ICON_LIGHT,
+    LOGO,
+} from "../../../utils/constants";
 
 export default function Header() {
     const location = useLocation();
@@ -11,17 +17,21 @@ export default function Header() {
     return (
         <div className="header">
             <div className="header__inner">
-                <Logo image={"./logo.png"} />
+                <Logo image={LOGO} />
                 <NavigationLinks />
                 <div className="header__buttons">
                     <NavLink
-                        to="/favourites"
+                        to={FAVOURITES_ENDPOINT}
                         className={({ isActive }) =>
                             isActive ? "header__btn active" : "header__btn"
                         }
                     >
                         <IconButton
-                            icon={location.pathname === '/favourites' ? './like-white.svg' : "./like.svg"}
+                            icon={
+                                location.pathname === FAVOURITES_ENDPOINT
+                                    ? LIKE_ICON_LIGHT
+                                    : LIKE_ICON
+                            }
                             alt="like"
                             onClick={() => {}}
                         />

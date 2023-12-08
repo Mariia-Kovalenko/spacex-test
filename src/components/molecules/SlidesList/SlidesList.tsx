@@ -6,11 +6,6 @@ export default function SlidesList() {
     const { slideNumber, slides } = useContext(SliderContext);
     return (
         <div className="list">
-            {/* {
-                slides.map((slide, i) => {
-                    return <Slide key={`slide-${slideNumber}`} imageScr={slides[i]} active={slideNumber === i} />
-                })
-            } */}
             <Slide key={`slide-${slideNumber}`} imageScr={slides[slideNumber]} />
         </div>
     );

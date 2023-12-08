@@ -1,15 +1,24 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { SliderContext } from "../../organisms/Slider/Slider";
 import IconButton from "../../atoms/IconButton/IconButton";
 
-import './SliderArrows.scss';
+import "./SliderArrows.scss";
+import { ARROW_LEFT, ARROW_RIGHT } from "../../../utils/constants";
 
 export default function SliderArrows() {
     const { changeSlide } = useContext(SliderContext);
-    return(
+    return (
         <div className="arrows">
-            <IconButton icon={'./arrow-left.svg'} onClick={() => changeSlide(-1)} alt={"prev"} />
-            <IconButton icon={'./arrow-right.svg'} onClick={() => changeSlide(1)} alt={"next"} />
+            <IconButton
+                icon={ARROW_LEFT}
+                onClick={() => changeSlide(-1)}
+                alt={"prev"}
+            />
+            <IconButton
+                icon={ARROW_RIGHT}
+                onClick={() => changeSlide(1)}
+                alt={"next"}
+            />
         </div>
-    )
+    );
 }
